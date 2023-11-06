@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using ContactManager.Models;
+using Testing.Models;
 
-namespace ContactManager.Models.Services
+namespace Testing.Models.Services
 {
     public class ContactRepository
     {
@@ -35,7 +35,6 @@ namespace ContactManager.Models.Services
                 }
             }
         }
-
         public Contact[] GetAllContacts()
         {
             var ctx = HttpContext.Current;
@@ -78,6 +77,5 @@ namespace ContactManager.Models.Services
 
             return false;
         }
-
     }
 }
