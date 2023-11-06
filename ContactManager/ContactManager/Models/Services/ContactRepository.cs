@@ -60,13 +60,17 @@ namespace ContactManager.Models.Services
             {
                 try
                 {
-                    var currentData = ((Contact[])ctx.Cache[CacheKey]).ToList();
+                    if (ctx.Cache[CacheKey] == null)
+                    {
+                        ctx.Cache[CacheKey] = new List<Contact>();
+                    }
+
+                    var currentData = ((List<Contact>)ctx.Cache[CacheKey]);
                     currentData.Add(contact);
-                    ctx.Cache[CacheKey] = currentData.ToArray();
 
                     return true;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
                     return false;
@@ -74,5 +78,6 @@ namespace ContactManager.Models.Services
             }
             return false;
         }
+
     }
 }
